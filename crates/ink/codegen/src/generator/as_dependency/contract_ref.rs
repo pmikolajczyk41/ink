@@ -92,8 +92,8 @@ impl ContractRef<'_> {
             ))]
             #[derive(
                 ::core::fmt::Debug,
-                ::parity_scale_codec::Encode,
-                ::parity_scale_codec::Decode,
+                ::scale::Encode,
+                ::scale::Decode,
                 ::core::hash::Hash,
                 ::core::cmp::PartialEq,
                 ::core::cmp::Eq,
@@ -121,7 +121,7 @@ impl ContractRef<'_> {
                 impl<E> ::ink::env::call::ConstructorReturnType<#ref_ident>
                     for ::core::result::Result<#storage_ident, E>
                 where
-                    E: ::parity_scale_codec::Decode
+                    E: ::scale::Decode
                 {
                     const IS_RESULT: bool = true;
 

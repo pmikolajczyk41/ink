@@ -100,7 +100,7 @@ impl<'a> Events<'a> {
             proc_macro2::Ident::new("__ink_EventBase", Span::call_site());
         quote! {
             #[allow(non_camel_case_types)]
-            #[derive(::parity_scale_codec::Encode, ::parity_scale_codec::Decode)]
+            #[derive(::scale::Encode, ::scale::Decode)]
             #[cfg(not(feature = "__ink_dylint_EventBase"))]
             pub enum #base_event_ident {
                 #(

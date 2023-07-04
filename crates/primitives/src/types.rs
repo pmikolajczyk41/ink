@@ -12,12 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use crate::scale::{
+use crate::scale;
+use core::array::TryFromSliceError;
+use derive_more::From;
+use scale::{
     Decode,
     Encode,
 };
-use core::array::TryFromSliceError;
-use derive_more::From;
 #[cfg(feature = "std")]
 use {
     scale_decode::DecodeAsType,

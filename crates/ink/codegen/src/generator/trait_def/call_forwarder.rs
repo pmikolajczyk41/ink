@@ -110,8 +110,8 @@ impl CallForwarder<'_> {
             #[doc(hidden)]
             #[allow(non_camel_case_types)]
             #[derive(
-                ::parity_scale_codec::Encode,
-                ::parity_scale_codec::Decode,
+                ::scale::Encode,
+                ::scale::Decode,
             )]
             #[repr(transparent)]
             pub struct #call_forwarder_ident<E>

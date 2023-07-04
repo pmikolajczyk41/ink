@@ -88,8 +88,8 @@ impl CallBuilder<'_> {
             ))]
             #[derive(
                 ::core::fmt::Debug,
-                ::parity_scale_codec::Encode,
-                ::parity_scale_codec::Decode,
+                ::scale::Encode,
+                ::scale::Decode,
                 ::core::hash::Hash,
                 ::core::cmp::PartialEq,
                 ::core::cmp::Eq,
