@@ -16,22 +16,22 @@ include = ["Cargo.toml", "src/**/*.rs", "README.md", "LICENSE"]
 readme = "README.md"
 
 [dependencies]
-array-init = { workspace = true, default-features = false }
+array-init = { workspace = true }
 cfg-if = { workspace = true }
-derive_more = { workspace = true, default-features = false, features = ["from", "display"] }
-parity-scale-codec = { workspace = true, default-features = false, features = ["derive"] }
-scale-info = { workspace = true, default-features = false, features = ["derive"], optional = true }
+derive_more = { workspace = true, features = ["from", "display"] }
+parity-scale-codec = { workspace = true, features = ["derive"] }
+scale-info = { workspace = true, features = ["derive"], optional = true }
 
-ink_env = { workspace = true, default-features = false }
-ink_metadata = { workspace = true, default-features = false, features = ["derive"], optional = true }
-ink_prelude = { workspace = true, default-features = false }
-ink_primitives = { workspace = true, default-features = false }
-ink_storage_traits = { workspace = true, default-features = false }
+ink_env = { workspace = true }
+ink_metadata = { workspace = true, features = ["derive"], optional = true }
+ink_prelude = { workspace = true }
+ink_primitives = { workspace = true }
+ink_storage_traits = { workspace = true }
 
 [dev-dependencies]
 quickcheck = { workspace = true }
 quickcheck_macros = { workspace = true }
-itertools = { workspace = true }
+itertools = { workspace = true, default-features = true }
 
 ink = { workspace = true }
 

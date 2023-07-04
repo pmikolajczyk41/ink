@@ -16,12 +16,12 @@ include = ["Cargo.toml", "src/**/*.rs", "README.md", "LICENSE"]
 readme = "../README.md"
 
 [dependencies]
-parity-scale-codec = { workspace = true, default-features = false, features = ["derive"] }
-scale-info = { workspace = true, default-features = false, features = ["derive"], optional = true }
+parity-scale-codec = { workspace = true, features = ["derive"] }
+scale-info = { workspace = true, features = ["derive"], optional = true }
 
-ink_metadata = { workspace = true, default-features = false, features = ["derive"], optional = true }
-ink_prelude = { workspace = true, default-features = false }
-ink_primitives = { workspace = true, default-features = false }
+ink_metadata = { workspace = true, features = ["derive"], optional = true }
+ink_prelude = { workspace = true }
+ink_primitives = { workspace = true }
 
 [dev-dependencies]
 paste = { workspace = true }

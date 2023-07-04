@@ -16,14 +16,14 @@ include = ["Cargo.toml", "src/**/*.rs", "README.md", "LICENSE"]
 readme = "README.md"
 
 [dependencies]
-serde = { workspace = true, default-features = false, features = ["derive", "alloc"] }
-impl-serde = { workspace = true }
-derive_more = { workspace = true, default-features = false, features = ["from"] }
-scale-info = { workspace = true, default-features = false, features = ["derive", "serde", "decode", "schema"] }
+serde = { workspace = true, features = ["derive", "alloc"] }
+impl-serde = { workspace = true, default-features = true }
+derive_more = { workspace = true, features = ["from"] }
+scale-info = { workspace = true, features = ["derive", "serde", "decode", "schema"] }
 schemars = { workspace = true }
 
-ink_prelude = { workspace = true, default-features = false }
-ink_primitives = { workspace = true, default-features = false }
+ink_prelude = { workspace = true }
+ink_primitives = { workspace = true }
 
 [dev-dependencies]
 pretty_assertions = { workspace = true }

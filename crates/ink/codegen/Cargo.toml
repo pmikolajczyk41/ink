@@ -20,19 +20,19 @@ name = "ink_codegen"
 
 [dependencies]
 blake2 = { workspace = true }
-derive_more = { workspace = true, default-features = false, features = ["from"] }
-either = { workspace = true, default-features = false }
+derive_more = { workspace = true, features = ["from"] }
+either = { workspace = true }
 heck = { workspace = true }
-impl-serde = { workspace = true }
+impl-serde = { workspace = true, default-features = true }
 itertools = { workspace = true }
-parity-scale-codec = { workspace = true, default-features = false, features = ["derive"] }
+parity-scale-codec = { workspace = true, features = ["derive"] }
 proc-macro2 = { workspace = true }
 quote = { workspace = true }
-serde = { workspace = true, default-features = false, features = ["derive"] }
+serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
 syn = { workspace = true, features = ["parsing", "full", "extra-traits"] }
 
-ink_ir = { workspace = true, default-features = false }
+ink_ir = { workspace = true }
 ink_primitives = { workspace = true }
 
 [features]

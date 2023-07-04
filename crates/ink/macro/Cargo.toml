@@ -16,23 +16,23 @@ include = ["Cargo.toml", "src/**/*.rs", "README.md", "LICENSE"]
 readme = "README.md"
 
 [dependencies]
-parity-scale-codec = { workspace = true, default-features = false, features = ["derive"] }
+parity-scale-codec = { workspace = true, features = ["derive"] }
 quote = { workspace = true }
 proc-macro2 = { workspace = true }
 syn = { workspace = true }
 synstructure = { workspace = true }
 
-ink_ir = { workspace = true, default-features = false }
-ink_codegen = { workspace = true, default-features = false }
-ink_primitives = { workspace = true, default-features = false }
+ink_ir = { workspace = true }
+ink_codegen = { workspace = true }
+ink_primitives = { workspace = true }
 
 [dev-dependencies]
-ink_env = { workspace = true }
-ink = { workspace = true }
-ink_metadata = { workspace = true }
-ink_prelude = { workspace = true }
-ink_storage = { workspace = true }
-scale-info = { workspace = true, default-features = false, features = ["derive"] }
+ink_env = { workspace = true, default-features = true }
+ink = { workspace = true, default-features = true }
+ink_metadata = { workspace = true, default-features = true }
+ink_prelude = { workspace = true, default-features = true }
+ink_storage = { workspace = true, default-features = true }
+scale-info = { workspace = true, features = ["derive"] }
 
 [lib]
 name = "ink_macro"

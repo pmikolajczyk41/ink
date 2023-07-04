@@ -21,7 +21,6 @@
 #![allow(clippy::match_single_binding)]
 
 use super::storable_derive;
-use crate::scale;
 
 #[test]
 fn unit_struct_works() {
@@ -34,13 +33,13 @@ fn unit_struct_works() {
                 impl ::ink::storage::traits::Storable for UnitStruct {
                     #[inline(always)]
                     #[allow(non_camel_case_types)]
-                    fn decode<__ink_I: ::scale::Input>(__input: &mut __ink_I) -> ::core::result::Result<Self, ::scale::Error> {
+                    fn decode<__ink_I: ::parity_scale_codec::Input>(__input: &mut __ink_I) -> ::core::result::Result<Self, ::parity_scale_codec::Error> {
                         ::core::result::Result::Ok(UnitStruct)
                     }
 
                     #[inline(always)]
                     #[allow(non_camel_case_types)]
-                    fn encode<__ink_O: ::scale::Output + ?::core::marker::Sized>(&self, __dest: &mut __ink_O) {
+                    fn encode<__ink_O: ::parity_scale_codec::Output + ?::core::marker::Sized>(&self, __dest: &mut __ink_O) {
                         match self {
                             UnitStruct => { }
                         }
@@ -66,7 +65,7 @@ fn struct_works() {
                 impl ::ink::storage::traits::Storable for NamedFields {
                     #[inline(always)]
                     #[allow(non_camel_case_types)]
-                    fn decode<__ink_I: ::scale::Input>(__input: &mut __ink_I) -> ::core::result::Result<Self, ::scale::Error> {
+                    fn decode<__ink_I: ::parity_scale_codec::Input>(__input: &mut __ink_I) -> ::core::result::Result<Self, ::parity_scale_codec::Error> {
                         ::core::result::Result::Ok(
                             NamedFields {
                                 a : <i32 as ::ink::storage::traits::Storable>::decode(__input)?,
@@ -78,7 +77,7 @@ fn struct_works() {
 
                     #[inline(always)]
                     #[allow(non_camel_case_types)]
-                    fn encode<__ink_O: ::scale::Output + ?::core::marker::Sized>(&self, __dest: &mut __ink_O) {
+                    fn encode<__ink_O: ::parity_scale_codec::Output + ?::core::marker::Sized>(&self, __dest: &mut __ink_O) {
                         match self {
 
                             NamedFields {
@@ -126,7 +125,7 @@ fn one_variant_enum_works() {
                 impl ::ink::storage::traits::Storable for OneVariantEnum {
                     #[inline(always)]
                     #[allow(non_camel_case_types)]
-                    fn decode<__ink_I: ::scale::Input>(__input: &mut __ink_I) -> ::core::result::Result<Self, ::scale::Error> {
+                    fn decode<__ink_I: ::parity_scale_codec::Input>(__input: &mut __ink_I) -> ::core::result::Result<Self, ::parity_scale_codec::Error> {
                         ::core::result::Result::Ok(
                             match <::core::primitive::u8 as ::ink::storage::traits::Storable>::decode(__input)?
                             {
@@ -138,7 +137,7 @@ fn one_variant_enum_works() {
 
                     #[inline(always)]
                     #[allow(non_camel_case_types)]
-                    fn encode<__ink_O: ::scale::Output + ?::core::marker::Sized>(&self, __dest: &mut __ink_O) {
+                    fn encode<__ink_O: ::parity_scale_codec::Output + ?::core::marker::Sized>(&self, __dest: &mut __ink_O) {
                         match self {
                             OneVariantEnum::A => {
                                 {
@@ -171,7 +170,7 @@ fn enum_works() {
                 impl ::ink::storage::traits::Storable for MixedEnum {
                     #[inline(always)]
                     #[allow(non_camel_case_types)]
-                    fn decode<__ink_I: ::scale::Input>(__input: &mut __ink_I) -> ::core::result::Result<Self, ::scale::Error> {
+                    fn decode<__ink_I: ::parity_scale_codec::Input>(__input: &mut __ink_I) -> ::core::result::Result<Self, ::parity_scale_codec::Error> {
                         ::core::result::Result::Ok(
                             match <::core::primitive::u8 as ::ink::storage::traits::Storable>::decode(__input)?
                             {
@@ -191,7 +190,7 @@ fn enum_works() {
 
                     #[inline(always)]
                     #[allow(non_camel_case_types)]
-                    fn encode<__ink_O: ::scale::Output + ?::core::marker::Sized>(&self, __dest: &mut __ink_O) {
+                    fn encode<__ink_O: ::parity_scale_codec::Output + ?::core::marker::Sized>(&self, __dest: &mut __ink_O) {
                         match self {
                             MixedEnum::A => {
                                 {
@@ -257,8 +256,8 @@ fn generic_struct_works() {
         storable_derive {
             struct GenericStruct<T1, T2>
             where
-                T1: ::scale::Decode,
-                T2: ::scale::Encode,
+                T1: ::parity_scale_codec::Decode,
+                T2: ::parity_scale_codec::Encode,
             {
                 a: T1,
                 b: (T1, T2),
@@ -268,14 +267,14 @@ fn generic_struct_works() {
             const _: () = {
                 impl<T1, T2> ::ink::storage::traits::Storable for GenericStruct<T1, T2>
                 where
-                    T1: ::scale::Decode,
-                    T2: ::scale::Encode,
+                    T1: ::parity_scale_codec::Decode,
+                    T2: ::parity_scale_codec::Encode,
                     T1: ::ink::storage::traits::Storable,
                     (T1 , T2): ::ink::storage::traits::Storable
                 {
                     #[inline(always)]
                     #[allow(non_camel_case_types)]
-                    fn decode<__ink_I: ::scale::Input>(__input: &mut __ink_I) -> ::core::result::Result<Self, ::scale::Error> {
+                    fn decode<__ink_I: ::parity_scale_codec::Input>(__input: &mut __ink_I) -> ::core::result::Result<Self, ::parity_scale_codec::Error> {
                         ::core::result::Result::Ok(
                             GenericStruct {
                                 a: <T1 as ::ink::storage::traits::Storable>::decode(
@@ -290,7 +289,7 @@ fn generic_struct_works() {
 
                     #[inline(always)]
                     #[allow(non_camel_case_types)]
-                    fn encode<__ink_O: ::scale::Output + ?::core::marker::Sized>(&self, __dest: &mut __ink_O) {
+                    fn encode<__ink_O: ::parity_scale_codec::Output + ?::core::marker::Sized>(&self, __dest: &mut __ink_O) {
                         match self {
                             GenericStruct {
                                 a: __binding_0,
@@ -335,7 +334,7 @@ fn generic_enum_works() {
                 {
                     #[inline(always)]
                     #[allow(non_camel_case_types)]
-                    fn decode<__ink_I: ::scale::Input>(__input: &mut __ink_I) -> ::core::result::Result<Self, ::scale::Error> {
+                    fn decode<__ink_I: ::parity_scale_codec::Input>(__input: &mut __ink_I) -> ::core::result::Result<Self, ::parity_scale_codec::Error> {
                         ::core::result::Result::Ok(
                             match <::core::primitive::u8 as ::ink::storage::traits::Storable>::decode(__input)?
                             {
@@ -354,7 +353,7 @@ fn generic_enum_works() {
 
                     #[inline(always)]
                     #[allow(non_camel_case_types)]
-                    fn encode<__ink_O: ::scale::Output + ?::core::marker::Sized>(&self, __dest: &mut __ink_O) {
+                    fn encode<__ink_O: ::parity_scale_codec::Output + ?::core::marker::Sized>(&self, __dest: &mut __ink_O) {
                         match self {
                             GenericEnum::Tuple(__binding_0, __binding_1,) => {
                                 {
