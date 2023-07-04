@@ -15,6 +15,7 @@
 //! Right now the `engine` crate can only be used with the `ink_env::DefaultEnvironment`.
 //! This is a known limitation that we want to address in the future.
 
+use crate::scale;
 use derive_more::From;
 
 /// Same type as the `DefaultEnvironment::BlockNumber` type.

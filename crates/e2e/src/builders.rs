@@ -25,6 +25,7 @@ use ink_env::{
     },
     Environment,
 };
+use scale::Encode;
 
 /// The type returned from `ContractRef` constructors, partially initialized with the
 /// execution input arguments.

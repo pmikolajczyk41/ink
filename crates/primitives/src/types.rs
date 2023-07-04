@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use crate::parity_scale_codec::{
+use crate::scale::{
     Decode,
     Encode,
 };

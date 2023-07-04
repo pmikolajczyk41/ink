@@ -12,10 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use crate::{
-    scale,
-    GenerateCode,
-};
+use crate::GenerateCode;
 use derive_more::From;
 use proc_macro2::{
     Span,

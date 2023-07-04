@@ -15,7 +15,6 @@
 use super::TraitDefinition;
 use crate::{
     generator,
-    scale,
     traits::GenerateCode,
 };
 use derive_more::From;

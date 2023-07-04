@@ -14,7 +14,6 @@
 
 use crate::{
     generator,
-    scale,
     GenerateCode,
 };
 use derive_more::From;
