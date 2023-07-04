@@ -16,6 +16,3 @@ Cargo.lock
 
 # Ignore history files.
 **/.history/**
-
-# JetBrains project files
-.idea/
