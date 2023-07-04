@@ -1,19 +1,20 @@
 [package]
 name = "ink"
-version = "4.2.0"
-authors = ["Parity Technologies <admin@parity.io>", "Robin Freyler <robin@parity.io>"]
-edition = "2021"
-rust-version = "1.63"
 
-license = "Apache-2.0"
-readme = "README.md"
-repository = "https://github.com/paritytech/ink"
-documentation = "https://docs.rs/ink"
-homepage = "https://www.parity.io/"
+edition.workspace = true
+categories.workspace = true
+homepage.workspace = true
+keywords.workspace = true
+license.workspace = true
+repository.workspace = true
+version.workspace = true
+
+authors = ["Parity Technologies <admin@parity.io>", "Robin Freyler <robin@parity.io>"]
 description = "[ink!] Rust based eDSL for writing smart contracts for Substrate"
-keywords = ["wasm", "parity", "webassembly", "blockchain", "edsl"]
-categories = ["no-std", "embedded"]
+documentation = "https://docs.rs/ink"
 include = ["Cargo.toml", "src/**/*.rs", "README.md", "LICENSE"]
+readme = "README.md"
+rust-version = "1.63"
 
 [dependencies]
 ink_env = { version = "4.2.0", path = "../env", default-features = false }
