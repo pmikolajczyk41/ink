@@ -9,7 +9,7 @@ use ink_storage::{
     Mapping,
 };
 
-#[derive(Default, parity_scale_codec::Encode, parity_scale_codec::Decode)]
+#[derive(Default, scale::Encode, scale::Decode)]
 #[cfg_attr(
     feature = "std",
     derive(scale_info::TypeInfo, ink::storage::traits::StorageLayout)

@@ -7,7 +7,7 @@ use ink::{
     },
     selector_bytes,
 };
-use parity_scale_codec::Encode;
+use scale::Encode;
 
 #[ink::contract]
 pub mod contract {

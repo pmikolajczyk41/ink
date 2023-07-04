@@ -33,7 +33,6 @@ pub use chain_extension::ChainExtension;
 pub use types::AccountError;
 
 use derive_more::From;
-use parity_scale_codec as scale;
 
 /// Errors which can happen when interacting with this crate.
 #[derive(Debug, From, PartialEq, Eq)]

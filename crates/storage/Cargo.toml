@@ -19,7 +19,7 @@ readme = "README.md"
 array-init = { workspace = true }
 cfg-if = { workspace = true }
 derive_more = { workspace = true, features = ["from", "display"] }
-parity-scale-codec = { workspace = true, features = ["derive"] }
+scale = { workspace = true, features = ["derive"] }
 scale-info = { workspace = true, features = ["derive"], optional = true }
 
 ink_env = { workspace = true }
@@ -43,7 +43,7 @@ std = [
     "ink_prelude/std",
     "ink_primitives/std",
     "ink_storage_traits/std",
-    "parity-scale-codec/std",
+    "scale/std",
     "scale-info/std",
 ]
 ink-fuzz-tests = ["std"]

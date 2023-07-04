@@ -12,12 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use crate::{
-    ext::{
-        Engine,
-        Error,
-    },
-    scale,
+use crate::ext::{
+    Engine,
+    Error,
 };
 use secp256k1::{
     ecdsa::RecoverableSignature,

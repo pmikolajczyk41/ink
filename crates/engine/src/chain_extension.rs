@@ -13,7 +13,7 @@
 // limitations under the License.
 
 use super::Error;
-use crate::scale;
+
 use derive_more::From;
 use std::collections::{
     hash_map::Entry,

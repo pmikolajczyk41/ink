@@ -54,4 +54,3 @@ pub use self::{
         StorageKey,
     },
 };
-use parity_scale_codec as scale;

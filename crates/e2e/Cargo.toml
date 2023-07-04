@@ -19,7 +19,7 @@ readme = "README.md"
 funty = { workspace = true }
 impl-serde = { workspace = true }
 jsonrpsee = { workspace = true, features = ["ws-client"] }
-parity-scale-codec = { workspace = true, features = ["derive"] }
+scale = { workspace = true, features = ["derive"] }
 serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
 subxt = { workspace = true }

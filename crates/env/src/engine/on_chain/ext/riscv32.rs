@@ -19,10 +19,7 @@ use super::{
     Result,
     ReturnCode,
 };
-use crate::{
-    scale,
-    ReturnFlags,
-};
+use crate::ReturnFlags;
 use scale::Encode;
 
 // TODO: Remove the constant and use the real func ids.

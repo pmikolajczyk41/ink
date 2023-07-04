@@ -24,7 +24,6 @@ use crate::{
         ExecutionInput,
         Selector,
     },
-    scale,
     ContractEnv,
     Environment,
     Error,

@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use crate::scale;
 use impl_serde::serialize as serde_hex;
 use quote::format_ident;
 

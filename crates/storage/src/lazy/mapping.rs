@@ -19,14 +19,11 @@
 //! This mapping doesn't actually "own" any data.
 //! Instead it is just a simple wrapper around the contract storage facilities.
 
-use crate::{
-    scale,
-    traits::{
-        AutoKey,
-        Packed,
-        StorableHint,
-        StorageKey,
-    },
+use crate::traits::{
+    AutoKey,
+    Packed,
+    StorableHint,
+    StorageKey,
 };
 use core::marker::PhantomData;
 use ink_primitives::Key;

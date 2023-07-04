@@ -14,11 +14,9 @@ struct Contract<KEY: StorageKey = ManualKey<123>> {
 
 // Disabling of deriving allow to implement the trait manually
 impl<KEY: StorageKey> Storable for Contract<KEY> {
-    fn encode<T: parity_scale_codec::Output + ?Sized>(&self, _dest: &mut T) {}
+    fn encode<T: scale::Output + ?Sized>(&self, _dest: &mut T) {}
 
-    fn decode<I: parity_scale_codec::Input>(
-        _input: &mut I,
-    ) -> Result<Self, parity_scale_codec::Error> {
+    fn decode<I: scale::Input>(_input: &mut I) -> Result<Self, scale::Error> {
         Ok(Self {
             a: Default::default(),
             b: Default::default(),

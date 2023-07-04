@@ -27,7 +27,7 @@ use ink_engine::test_api::RecordedDebugMessages;
 use std::panic::UnwindSafe;
 
 pub use super::call_data::CallData;
-use crate::scale;
+
 pub use ink_engine::ChainExtension;
 
 /// Record for an emitted event.

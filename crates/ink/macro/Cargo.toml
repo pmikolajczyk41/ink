@@ -16,7 +16,7 @@ include = ["Cargo.toml", "src/**/*.rs", "README.md", "LICENSE"]
 readme = "README.md"
 
 [dependencies]
-parity-scale-codec = { workspace = true, features = ["derive"] }
+scale = { workspace = true, features = ["derive"] }
 quote = { workspace = true }
 proc-macro2 = { workspace = true }
 syn = { workspace = true }
@@ -41,7 +41,7 @@ proc-macro = true
 [features]
 default = ["std"]
 std = [
-    "parity-scale-codec/std",
+    "scale/std",
     "ink_ir/std",
     "ink_primitives/std",
 ]

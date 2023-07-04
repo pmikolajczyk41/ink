@@ -12,10 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use crate::{
-    scale,
-    types::Balance,
-};
+use crate::types::Balance;
 use scale::KeyedVec;
 use std::collections::HashMap;
 

@@ -25,7 +25,6 @@ use crate::{
         CryptoHash,
         HashOutput,
     },
-    scale,
     topics::Topics,
     Environment,
     Result,

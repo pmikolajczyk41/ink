@@ -16,7 +16,6 @@
 //!
 //! Refer to substrate FRAME contract module for more documentation.
 
-use crate::scale;
 use core::marker::PhantomData;
 use scale::Encode;
 

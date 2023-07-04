@@ -16,7 +16,7 @@ include = ["Cargo.toml", "src/**/*.rs", "README.md", "LICENSE"]
 readme = "../README.md"
 
 [dependencies]
-parity-scale-codec = { workspace = true, features = ["derive"] }
+scale = { workspace = true, features = ["derive"] }
 scale-info = { workspace = true, features = ["derive"], optional = true }
 
 ink_metadata = { workspace = true, features = ["derive"], optional = true }
@@ -32,6 +32,6 @@ std = [
     "ink_metadata/std",
     "ink_primitives/std",
     "ink_prelude/std",
-    "parity-scale-codec/std",
+    "scale/std",
     "scale-info/std",
 ]

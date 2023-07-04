@@ -25,7 +25,6 @@ pub use call_data::CallData;
 use super::OnInstance;
 use crate::Error;
 
-use crate::scale;
 use derive_more::From;
 use ink_engine::ext::Engine;
 

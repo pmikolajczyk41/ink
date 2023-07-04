@@ -19,7 +19,7 @@ use super::{
     ContractInstantiateResult,
     Signer,
 };
-use crate::scale;
+
 use ink_env::Environment;
 
 use core::marker::PhantomData;

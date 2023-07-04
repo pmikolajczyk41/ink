@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use crate::scale;
-
 /// A static buffer with 16 kB of capacity.
 pub struct StaticBuffer {
     /// The static buffer with a total capacity of 16 kB.

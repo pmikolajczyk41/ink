@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use crate::scale;
-
 /// Used to check if `T` is allowed as ink! input parameter type.
 ///
 /// # Note

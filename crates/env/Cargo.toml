@@ -21,7 +21,7 @@ arrayref = { workspace = true }
 cfg-if = { workspace = true }
 derive_more = { workspace = true, features = ["from", "display"] }
 num-traits = { workspace = true, features = ["i128"] }
-parity-scale-codec = { workspace = true, features = ["derive"] }
+scale = { workspace = true, features = ["derive"] }
 paste = { workspace = true }
 static_assertions = { workspace = true }
 
@@ -63,7 +63,7 @@ std = [
     "ink_primitives/std",
     "ink_storage_traits/std",
     "ink_engine/std",
-    "parity-scale-codec/std",
+    "scale/std",
     "scale-decode",
     "scale-encode",
     "scale-info/std",

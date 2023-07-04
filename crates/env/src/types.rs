@@ -32,7 +32,7 @@
 //! the trait bounds on the `Environment` trait types.
 
 use super::arithmetic::AtLeast32BitUnsigned;
-use crate::scale;
+
 use ink_primitives::{
     AccountId,
     Clear,

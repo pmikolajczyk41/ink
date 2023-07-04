@@ -38,7 +38,6 @@ pub use ink_prelude as prelude;
 pub use ink_primitives as primitives;
 #[cfg(feature = "std")]
 pub use metadata::TypeInfo;
-use parity_scale_codec as scale;
 
 pub mod storage {
     pub mod traits {

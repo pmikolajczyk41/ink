@@ -17,7 +17,7 @@ readme = "README.md"
 
 [dependencies]
 derive_more = { workspace = true, features = ["from", "display"] }
-parity-scale-codec = { workspace = true, features = ["derive"] }
+scale = { workspace = true, features = ["derive"] }
 sha2 = { workspace = true }
 sha3 = { workspace = true }
 blake2 = { workspace = true }
@@ -30,6 +30,6 @@ secp256k1 = { workspace = true, features = ["recovery", "global-context"], optio
 [features]
 default = ["std"]
 std = [
-    "parity-scale-codec/std",
+    "scale/std",
     "secp256k1"
 ]

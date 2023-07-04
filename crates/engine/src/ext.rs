@@ -21,7 +21,6 @@ use crate::{
     chain_extension::ChainExtensionHandler,
     database::Database,
     exec_context::ExecContext,
-    scale,
     test_api::{
         DebugInfo,
         EmittedEvent,
