@@ -31,7 +31,7 @@ use quote::{
 /// Generator to create the ink! storage struct and important trait implementations.
 #[derive(From, Copy, Clone)]
 pub struct TraitDefinition<'a> {
-    trait_def: &'a ir::InkTraitDefinition,
+    trait_def: &'a ink_ir::InkTraitDefinition,
 }
 
 impl<'a> TraitDefinition<'a> {

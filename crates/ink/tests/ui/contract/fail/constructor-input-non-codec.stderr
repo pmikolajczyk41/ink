@@ -12,7 +12,7 @@ error[E0277]: the trait bound `NonCodecType: WrapperTypeDecode` is not satisfied
 note: required by a bound in `DispatchInput`
   --> src/codegen/dispatch/type_check.rs
    |
-   |     T: scale::Decode + 'static;
+   |     T: parity_scale_codec::Decode + 'static;
    |        ^^^^^^^^^^^^^ required by this bound in `DispatchInput`
 
 error[E0277]: the trait bound `NonCodecType: WrapperTypeDecode` is not satisfied
@@ -50,5 +50,5 @@ error[E0277]: the trait bound `NonCodecType: WrapperTypeEncode` is not satisfied
 note: required by a bound in `ExecutionInput::<ArgumentList<ArgumentListEnd, ArgumentListEnd>>::push_arg`
   --> $WORKSPACE/crates/env/src/call/execution_input.rs
    |
-   |         T: scale::Encode,
+   |         T: parity_scale_codec::Encode,
    |            ^^^^^^^^^^^^^ required by this bound in `ExecutionInput::<ArgumentList<ArgumentListEnd, ArgumentListEnd>>::push_arg`

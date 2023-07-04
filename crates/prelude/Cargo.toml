@@ -16,7 +16,7 @@ include = ["/Cargo.toml", "src/**/*.rs", "/README.md", "/LICENSE"]
 readme = "README.md"
 
 [dependencies]
-cfg-if = "1.0"
+cfg-if = { workspace = true }
 
 [features]
 default = ["std"]

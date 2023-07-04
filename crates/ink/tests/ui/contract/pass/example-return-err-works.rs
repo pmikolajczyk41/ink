@@ -12,7 +12,9 @@ mod return_err {
         count: i32,
     }
 
-    #[derive(Debug, PartialEq, Eq, scale::Encode, scale::Decode)]
+    #[derive(
+        Debug, PartialEq, Eq, parity_scale_codec::Encode, parity_scale_codec::Decode,
+    )]
     #[cfg_attr(feature = "std", derive(::scale_info::TypeInfo))]
     pub enum Error {
         Foo,

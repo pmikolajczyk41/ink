@@ -126,6 +126,7 @@ pub use self::{
     },
 };
 use ink_primitives::Clear;
+use parity_scale_codec as scale;
 
 cfg_if::cfg_if! {
     if #[cfg(any(feature = "ink-debug", feature = "std"))] {

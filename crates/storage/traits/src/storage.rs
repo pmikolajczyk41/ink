@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use crate::scale;
 use ink_primitives::Key;
 
 /// Trait for representing types which can be read and written to storage.

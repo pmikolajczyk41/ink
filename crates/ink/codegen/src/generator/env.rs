@@ -20,7 +20,7 @@ use quote::quote;
 /// Generates code for the ink! environment of the contract.
 #[derive(From)]
 pub struct Env<'a> {
-    contract: &'a ir::Contract,
+    contract: &'a ink_ir::Contract,
 }
 
 impl GenerateCode for Env<'_> {

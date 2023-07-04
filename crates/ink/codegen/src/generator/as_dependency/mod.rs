@@ -35,7 +35,7 @@ use quote::quote;
 #[derive(From)]
 pub struct ContractReference<'a> {
     /// The contract to generate code for.
-    contract: &'a ir::Contract,
+    contract: &'a ink_ir::Contract,
 }
 impl_as_ref_for_generator!(ContractReference);
 

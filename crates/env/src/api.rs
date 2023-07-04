@@ -36,6 +36,7 @@ use crate::{
         CryptoHash,
         HashOutput,
     },
+    scale,
     topics::Topics,
     types::Gas,
     Environment,

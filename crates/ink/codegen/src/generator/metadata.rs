@@ -15,7 +15,7 @@
 use crate::GenerateCode;
 use ::core::iter;
 use derive_more::From;
-use ir::{
+use ink_ir::{
     Callable as _,
     HexLiteral,
     IsDocAttribute,
@@ -37,7 +37,7 @@ use syn::{
 #[derive(From)]
 pub struct Metadata<'a> {
     /// The contract to generate code for.
-    contract: &'a ir::Contract,
+    contract: &'a ink_ir::Contract,
 }
 impl_as_ref_for_generator!(Metadata);
 
@@ -137,7 +137,7 @@ impl Metadata<'_> {
     /// Generates ink! metadata for a single ink! constructor.
     fn generate_constructor(
         &self,
-        constructor: ir::CallableWithSelector<ir::Constructor>,
+        constructor: ink_ir::CallableWithSelector<ink_ir::Constructor>,
     ) -> TokenStream2 {
         let span = constructor.span();
         let docs = constructor
@@ -397,7 +397,9 @@ impl Metadata<'_> {
     }
 
     /// Generate ink! metadata for a single argument of an ink! event definition.
-    fn generate_event_args(event: &ir::Event) -> impl Iterator<Item = TokenStream2> + '_ {
+    fn generate_event_args(
+        event: &ink_ir::Event,
+    ) -> impl Iterator<Item = TokenStream2> + '_ {
         event.fields().map(|event_field| {
             let span = event_field.span();
             let ident = event_field.ident();

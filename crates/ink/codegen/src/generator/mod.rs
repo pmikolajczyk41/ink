@@ -18,8 +18,8 @@
 /// They need to implement this trait in order to use other code generators.
 macro_rules! impl_as_ref_for_generator {
     ( $generator_name:ident ) => {
-        impl ::core::convert::AsRef<ir::Contract> for $generator_name<'_> {
-            fn as_ref(&self) -> &ir::Contract {
+        impl ::core::convert::AsRef<ink_ir::Contract> for $generator_name<'_> {
+            fn as_ref(&self) -> &ink_ir::Contract {
                 self.contract
             }
         }

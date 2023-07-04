@@ -25,7 +25,7 @@ use quote::quote;
 #[derive(From)]
 pub struct Contract<'a> {
     /// The contract to generate code for.
-    contract: &'a ir::Contract,
+    contract: &'a ink_ir::Contract,
 }
 impl_as_ref_for_generator!(Contract);
 
@@ -49,7 +49,7 @@ impl GenerateCode for Contract<'_> {
             .module()
             .items()
             .iter()
-            .filter_map(ir::Item::map_rust_item);
+            .filter_map(ink_ir::Item::map_rust_item);
         quote! {
             #( #attrs )*
             #vis mod #ident {

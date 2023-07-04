@@ -14,10 +14,11 @@
 
 use crate::{
     generator,
+    scale,
     GenerateCode,
 };
 use derive_more::From;
-use ir::{
+use ink_ir::{
     Callable,
     IsDocAttribute as _,
 };
@@ -41,7 +42,7 @@ use syn::spanned::Spanned as _;
 /// smart contract via long-hand calling notation to incrementally build up calls.
 #[derive(From)]
 pub struct ContractRef<'a> {
-    contract: &'a ir::Contract,
+    contract: &'a ink_ir::Contract,
 }
 
 impl GenerateCode for ContractRef<'_> {
@@ -92,8 +93,8 @@ impl ContractRef<'_> {
             ))]
             #[derive(
                 ::core::fmt::Debug,
-                ::scale::Encode,
-                ::scale::Decode,
+                ::parity_scale_codec::Encode,
+                ::parity_scale_codec::Decode,
                 ::core::hash::Hash,
                 ::core::cmp::PartialEq,
                 ::core::cmp::Eq,
@@ -121,7 +122,7 @@ impl ContractRef<'_> {
                 impl<E> ::ink::env::call::ConstructorReturnType<#ref_ident>
                     for ::core::result::Result<#storage_ident, E>
                 where
-                    E: ::scale::Decode
+                    E: ::parity_scale_codec::Decode
                 {
                     const IS_RESULT: bool = true;
 
@@ -238,7 +239,7 @@ impl ContractRef<'_> {
     fn generate_contract_trait_impl(
         &self,
         trait_path: &syn::Path,
-        impl_block: &ir::ItemImpl,
+        impl_block: &ink_ir::ItemImpl,
     ) -> TokenStream2 {
         let span = impl_block.span();
         let attrs = impl_block.attrs();
@@ -260,7 +261,7 @@ impl ContractRef<'_> {
     fn generate_contract_trait_impl_messages(
         &self,
         trait_path: &syn::Path,
-        impl_block: &ir::ItemImpl,
+        impl_block: &ink_ir::ItemImpl,
     ) -> TokenStream2 {
         impl_block
             .iter_messages()
@@ -275,20 +276,20 @@ impl ContractRef<'_> {
     fn generate_contract_trait_impl_for_message(
         &self,
         trait_path: &syn::Path,
-        message: ir::CallableWithSelector<ir::Message>,
+        message: ink_ir::CallableWithSelector<ink_ir::Message>,
     ) -> TokenStream2 {
-        use ir::Callable as _;
+        use ink_ir::Callable as _;
         let span = message.span();
         let trait_info_id = generator::generate_reference_to_trait_info(span, trait_path);
         let message_ident = message.ident();
         let output_ident = generator::output_ident(message_ident);
         let call_operator = match message.receiver() {
-            ir::Receiver::Ref => quote! { call },
-            ir::Receiver::RefMut => quote! { call_mut },
+            ink_ir::Receiver::Ref => quote! { call },
+            ink_ir::Receiver::RefMut => quote! { call_mut },
         };
         let forward_operator = match message.receiver() {
-            ir::Receiver::Ref => quote! { forward },
-            ir::Receiver::RefMut => quote! { forward_mut },
+            ink_ir::Receiver::Ref => quote! { forward },
+            ink_ir::Receiver::RefMut => quote! { forward_mut },
         };
         let mut_token = message.receiver().is_ref_mut().then(|| quote! { mut });
         let input_bindings = message.inputs().map(|input| &input.pat).collect::<Vec<_>>();
@@ -343,7 +344,10 @@ impl ContractRef<'_> {
     /// This produces the short-hand calling notation for the inherent contract
     /// implementation. The generated code simply forwards its calling logic to the
     /// associated call builder.
-    fn generate_contract_inherent_impl(&self, impl_block: &ir::ItemImpl) -> TokenStream2 {
+    fn generate_contract_inherent_impl(
+        &self,
+        impl_block: &ink_ir::ItemImpl,
+    ) -> TokenStream2 {
         let span = impl_block.span();
         let attrs = impl_block.attrs();
         let forwarder_ident = self.generate_contract_ref_ident();
@@ -371,9 +375,9 @@ impl ContractRef<'_> {
     /// builder.
     fn generate_contract_inherent_impl_for_message(
         &self,
-        message: ir::CallableWithSelector<ir::Message>,
+        message: ink_ir::CallableWithSelector<ink_ir::Message>,
     ) -> TokenStream2 {
-        use ir::Callable as _;
+        use ink_ir::Callable as _;
         let span = message.span();
         let attrs = self
             .contract
@@ -384,8 +388,8 @@ impl ContractRef<'_> {
         let message_ident = message.ident();
         let try_message_ident = message.try_ident();
         let call_operator = match message.receiver() {
-            ir::Receiver::Ref => quote! { call },
-            ir::Receiver::RefMut => quote! { call_mut },
+            ink_ir::Receiver::Ref => quote! { call },
+            ink_ir::Receiver::RefMut => quote! { call_mut },
         };
         let mut_token = message.receiver().is_ref_mut().then(|| quote! { mut });
         let input_bindings = message.inputs().map(|input| &input.pat).collect::<Vec<_>>();
@@ -436,7 +440,7 @@ impl ContractRef<'_> {
     /// implements the long-hand calling notation code directly.
     fn generate_contract_inherent_impl_for_constructor(
         &self,
-        constructor: ir::CallableWithSelector<ir::Constructor>,
+        constructor: ink_ir::CallableWithSelector<ink_ir::Constructor>,
     ) -> TokenStream2 {
         let span = constructor.span();
         let attrs = self

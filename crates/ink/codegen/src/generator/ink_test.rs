@@ -21,7 +21,7 @@ use quote::quote;
 #[derive(From)]
 pub struct InkTest<'a> {
     /// The test function to generate code for.
-    test: &'a ir::InkTest,
+    test: &'a ink_ir::InkTest,
 }
 
 impl GenerateCode for InkTest<'_> {
@@ -72,7 +72,7 @@ impl GenerateCode for InkTest<'_> {
     }
 }
 
-impl GenerateCode for ir::InkTest {
+impl GenerateCode for ink_ir::InkTest {
     fn generate_code(&self) -> TokenStream2 {
         InkTest::from(self).generate_code()
     }

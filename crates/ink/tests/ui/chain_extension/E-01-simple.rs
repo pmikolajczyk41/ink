@@ -40,7 +40,14 @@ pub trait RuntimeReadWrite {
 
 /// The shared error code for the read write chain extension.
 #[derive(
-    Debug, Copy, Clone, PartialEq, Eq, scale::Encode, scale::Decode, scale_info::TypeInfo,
+    Debug,
+    Copy,
+    Clone,
+    PartialEq,
+    Eq,
+    parity_scale_codec::Encode,
+    parity_scale_codec::Decode,
+    scale_info::TypeInfo,
 )]
 pub enum ReadWriteErrorCode {
     InvalidKey,
@@ -52,7 +59,14 @@ pub enum ReadWriteErrorCode {
 ///
 /// Provides the number of bytes required to read the storage cell.
 #[derive(
-    Debug, Copy, Clone, PartialEq, Eq, scale::Encode, scale::Decode, scale_info::TypeInfo,
+    Debug,
+    Copy,
+    Clone,
+    PartialEq,
+    Eq,
+    parity_scale_codec::Encode,
+    parity_scale_codec::Decode,
+    scale_info::TypeInfo,
 )]
 pub enum ReadWriteError {
     ErrorCode(ReadWriteErrorCode),
@@ -65,27 +79,41 @@ impl From<ReadWriteErrorCode> for ReadWriteError {
     }
 }
 
-impl From<scale::Error> for ReadWriteError {
-    fn from(_: scale::Error) -> Self {
+impl From<parity_scale_codec::Error> for ReadWriteError {
+    fn from(_: parity_scale_codec::Error) -> Self {
         panic!("encountered unexpected invalid SCALE encoding")
     }
 }
 
 /// Returned by `unlock_access` if permission to access key was not granted with reason.
-#[derive(Debug, PartialEq, Eq, scale::Encode, scale::Decode, scale_info::TypeInfo)]
+#[derive(
+    Debug,
+    PartialEq,
+    Eq,
+    parity_scale_codec::Encode,
+    parity_scale_codec::Decode,
+    scale_info::TypeInfo,
+)]
 pub struct UnlockAccessError {
     reason: String,
 }
 
-impl From<scale::Error> for UnlockAccessError {
-    fn from(_: scale::Error) -> Self {
+impl From<parity_scale_codec::Error> for UnlockAccessError {
+    fn from(_: parity_scale_codec::Error) -> Self {
         panic!("encountered unexpected invalid SCALE encoding")
     }
 }
 
 /// The kind of access allows for a storage cell.
 #[derive(
-    Debug, Copy, Clone, PartialEq, Eq, scale::Encode, scale::Decode, scale_info::TypeInfo,
+    Debug,
+    Copy,
+    Clone,
+    PartialEq,
+    Eq,
+    parity_scale_codec::Encode,
+    parity_scale_codec::Decode,
+    scale_info::TypeInfo,
 )]
 pub enum Access {
     ReadWrite,

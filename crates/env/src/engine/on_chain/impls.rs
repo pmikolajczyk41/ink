@@ -35,6 +35,7 @@ use crate::{
         Keccak256,
         Sha2x256,
     },
+    scale,
     topics::{
         Topics,
         TopicsBuilderBackend,

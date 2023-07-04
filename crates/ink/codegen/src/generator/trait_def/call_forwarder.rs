@@ -15,6 +15,7 @@
 use super::TraitDefinition;
 use crate::{
     generator,
+    scale,
     traits::GenerateCode,
 };
 use derive_more::From;
@@ -110,8 +111,8 @@ impl CallForwarder<'_> {
             #[doc(hidden)]
             #[allow(non_camel_case_types)]
             #[derive(
-                ::scale::Encode,
-                ::scale::Decode,
+                ::parity_scale_codec::Encode,
+                ::parity_scale_codec::Decode,
             )]
             #[repr(transparent)]
             pub struct #call_forwarder_ident<E>
@@ -364,7 +365,7 @@ impl CallForwarder<'_> {
     /// forwarder.
     fn generate_ink_trait_impl_for_message(
         &self,
-        message: &ir::InkTraitMessage,
+        message: &ink_ir::InkTraitMessage,
     ) -> TokenStream2 {
         let span = message.span();
         let trait_ident = self.trait_def.trait_def.item().ident();
@@ -384,8 +385,8 @@ impl CallForwarder<'_> {
         let input_bindings = message.inputs().map(|input| &input.pat).collect::<Vec<_>>();
         let input_types = message.inputs().map(|input| &input.ty).collect::<Vec<_>>();
         let call_op = match message.receiver() {
-            ir::Receiver::Ref => quote! { call },
-            ir::Receiver::RefMut => quote! { call_mut },
+            ink_ir::Receiver::Ref => quote! { call },
+            ink_ir::Receiver::RefMut => quote! { call_mut },
         };
         let mut_tok = message.mutates().then(|| quote! { mut });
         let panic_str = format!(

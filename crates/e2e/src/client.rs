@@ -50,6 +50,7 @@ use std::{
     path::PathBuf,
 };
 
+use crate::scale;
 use subxt::{
     blocks::ExtrinsicEvents,
     config::ExtrinsicParams,

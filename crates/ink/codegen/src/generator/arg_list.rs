@@ -34,7 +34,7 @@ pub fn output_ident(message_name: &syn::Ident) -> syn::Ident {
 ///
 /// This returns `__ink_binding_N` for every message input where `N` is the number
 /// of the input from first to last.
-pub fn input_bindings(inputs: ir::InputsIter) -> Vec<syn::Ident> {
+pub fn input_bindings(inputs: ink_ir::InputsIter) -> Vec<syn::Ident> {
     inputs
         .enumerate()
         .map(|(n, _)| format_ident!("__ink_binding_{}", n))
@@ -42,12 +42,12 @@ pub fn input_bindings(inputs: ir::InputsIter) -> Vec<syn::Ident> {
 }
 
 /// Returns the sequence of input types for the message.
-pub fn input_types(inputs: ir::InputsIter) -> Vec<&syn::Type> {
+pub fn input_types(inputs: ink_ir::InputsIter) -> Vec<&syn::Type> {
     inputs.map(|pat_type| &*pat_type.ty).collect::<Vec<_>>()
 }
 
 /// Returns a tuple type representing the types yielded by the input types.
-pub fn input_types_tuple(inputs: ir::InputsIter) -> TokenStream2 {
+pub fn input_types_tuple(inputs: ink_ir::InputsIter) -> TokenStream2 {
     let input_types = input_types(inputs);
     if input_types.len() != 1 {
         // Pack all types into a tuple if they are not exactly 1.
@@ -60,7 +60,7 @@ pub fn input_types_tuple(inputs: ir::InputsIter) -> TokenStream2 {
 }
 
 /// Returns a tuple expression representing the bindings yielded by the inputs.
-pub fn input_bindings_tuple(inputs: ir::InputsIter) -> TokenStream2 {
+pub fn input_bindings_tuple(inputs: ink_ir::InputsIter) -> TokenStream2 {
     let input_bindings = input_bindings(inputs);
     match input_bindings.len() {
         0 => quote! { _ },

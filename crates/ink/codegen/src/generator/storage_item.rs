@@ -40,7 +40,7 @@ use syn::{
 #[derive(From, Copy, Clone)]
 pub struct StorageItem<'a> {
     /// The storage item to generate code for.
-    item: &'a ir::StorageItem,
+    item: &'a ink_ir::StorageItem,
 }
 
 impl GenerateCode for StorageItem<'_> {

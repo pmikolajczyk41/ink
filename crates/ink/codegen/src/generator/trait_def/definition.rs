@@ -24,7 +24,7 @@ use quote::{
 };
 
 impl<'a> TraitDefinition<'a> {
-    fn generate_for_message(message: ir::InkTraitMessage<'a>) -> TokenStream2 {
+    fn generate_for_message(message: ink_ir::InkTraitMessage<'a>) -> TokenStream2 {
         let span = message.span();
         let attrs = message.attrs();
         let sig = message.sig();
@@ -57,7 +57,7 @@ impl TraitDefinition<'_> {
         let messages = item
             .iter_items()
             .map(|(item, _)| item)
-            .flat_map(ir::InkTraitItem::filter_map_message)
+            .flat_map(ink_ir::InkTraitItem::filter_map_message)
             .map(Self::generate_for_message);
         quote_spanned!(span =>
             #(#attrs)*

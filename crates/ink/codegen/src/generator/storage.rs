@@ -24,7 +24,7 @@ use syn::spanned::Spanned as _;
 /// Generator to create the ink! storage struct and important trait implementations.
 #[derive(From)]
 pub struct Storage<'a> {
-    contract: &'a ir::Contract,
+    contract: &'a ink_ir::Contract,
 }
 impl_as_ref_for_generator!(Storage);
 

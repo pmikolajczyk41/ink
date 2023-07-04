@@ -12,7 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use crate::GenerateCode;
+use crate::{
+    scale,
+    GenerateCode,
+};
 use derive_more::From;
 use proc_macro2::{
     Span,
@@ -27,7 +30,7 @@ use syn::spanned::Spanned as _;
 /// Generates code for the ink! event structs of the contract.
 #[derive(From)]
 pub struct Events<'a> {
-    contract: &'a ir::Contract,
+    contract: &'a ink_ir::Contract,
 }
 impl_as_ref_for_generator!(Events);
 
@@ -100,7 +103,7 @@ impl<'a> Events<'a> {
             proc_macro2::Ident::new("__ink_EventBase", Span::call_site());
         quote! {
             #[allow(non_camel_case_types)]
-            #[derive(::scale::Encode, ::scale::Decode)]
+            #[derive(::parity_scale_codec::Encode, ::parity_scale_codec::Decode)]
             #[cfg(not(feature = "__ink_dylint_EventBase"))]
             pub enum #base_event_ident {
                 #(
@@ -159,7 +162,7 @@ impl<'a> Events<'a> {
     }
 
     /// Generate checks to guard against too many topics in event definitions.
-    fn generate_topics_guard(&self, event: &ir::Event) -> TokenStream2 {
+    fn generate_topics_guard(&self, event: &ink_ir::Event) -> TokenStream2 {
         let span = event.span();
         let storage_ident = self.contract.module().storage().ident();
         let event_ident = event.ident();

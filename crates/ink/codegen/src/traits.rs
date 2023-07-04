@@ -21,23 +21,23 @@ pub trait GenerateCode {
 }
 
 /// Types implementing this trait can forward code generation to other generators.
-pub trait GenerateCodeUsing: AsRef<ir::Contract> {
+pub trait GenerateCodeUsing: AsRef<ink_ir::Contract> {
     /// Generates code using the given codegen module.
     fn generate_code_using<'a, G>(&'a self) -> TokenStream2
     where
-        G: GenerateCode + From<&'a ir::Contract>;
+        G: GenerateCode + From<&'a ink_ir::Contract>;
 }
 
 impl<T> GenerateCodeUsing for T
 where
-    T: AsRef<ir::Contract>,
+    T: AsRef<ink_ir::Contract>,
 {
     fn generate_code_using<'a, G>(&'a self) -> TokenStream2
     where
-        G: GenerateCode + From<&'a ir::Contract>,
+        G: GenerateCode + From<&'a ink_ir::Contract>,
     {
         <G as GenerateCode>::generate_code(&G::from(
-            <Self as AsRef<ir::Contract>>::as_ref(self),
+            <Self as AsRef<ink_ir::Contract>>::as_ref(self),
         ))
     }
 }

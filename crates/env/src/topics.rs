@@ -14,7 +14,10 @@
 
 //! This module contains the implementation for the event topic logic.
 
-use crate::Environment;
+use crate::{
+    scale,
+    Environment,
+};
 
 /// The concrete implementation that is guided by the topics builder.
 ///

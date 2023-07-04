@@ -21,6 +21,7 @@ use crate::{
         ConstructorReturnType,
         FromAccountId,
     },
+    scale,
     Error as EnvError,
     Error,
     Result as EnvResult,

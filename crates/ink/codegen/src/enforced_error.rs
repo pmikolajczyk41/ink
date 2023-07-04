@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use crate::scale;
 use impl_serde::serialize as serde_hex;
 use quote::format_ident;
 
@@ -54,7 +55,7 @@ impl EnforcedErrors {
     pub fn cannot_call_trait_message(
         trait_ident: &syn::Ident,
         message_ident: &syn::Ident,
-        message_selector: ir::Selector,
+        message_selector: ink_ir::Selector,
         message_is_mut: bool,
     ) -> syn::Ident {
         Self::CannotCallTraitMessage {

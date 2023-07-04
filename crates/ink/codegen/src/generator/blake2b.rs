@@ -14,7 +14,7 @@
 
 use crate::GenerateCode;
 use derive_more::From;
-use ir::HexLiteral;
+use ink_ir::HexLiteral;
 use proc_macro2::TokenStream as TokenStream2;
 use quote::quote_spanned;
 
@@ -22,7 +22,7 @@ use quote::quote_spanned;
 #[derive(From)]
 pub struct Blake2x256<'a> {
     /// The `blake2x256!` macro input.
-    macro_input: &'a ir::Blake2x256Macro,
+    macro_input: &'a ink_ir::Blake2x256Macro,
 }
 
 impl GenerateCode for Blake2x256<'_> {

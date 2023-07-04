@@ -14,10 +14,11 @@
 
 use crate::{
     generator,
+    scale,
     GenerateCode,
 };
 use derive_more::From;
-use ir::Callable;
+use ink_ir::Callable;
 use proc_macro2::TokenStream as TokenStream2;
 use quote::{
     format_ident,
@@ -39,7 +40,7 @@ use syn::spanned::Spanned as _;
 /// smart contract via long-hand calling notation to incrementally build up calls.
 #[derive(From)]
 pub struct CallBuilder<'a> {
-    contract: &'a ir::Contract,
+    contract: &'a ink_ir::Contract,
 }
 
 impl GenerateCode for CallBuilder<'_> {
@@ -88,8 +89,8 @@ impl CallBuilder<'_> {
             ))]
             #[derive(
                 ::core::fmt::Debug,
-                ::scale::Encode,
-                ::scale::Decode,
+                ::parity_scale_codec::Encode,
+                ::parity_scale_codec::Decode,
                 ::core::hash::Hash,
                 ::core::cmp::PartialEq,
                 ::core::cmp::Eq,
@@ -172,7 +173,7 @@ impl CallBuilder<'_> {
     fn generate_code_for_trait_impl(
         &self,
         trait_path: &syn::Path,
-        impl_block: &ir::ItemImpl,
+        impl_block: &ink_ir::ItemImpl,
     ) -> TokenStream2 {
         let call_forwarder_impl =
             self.generate_call_forwarder_for_trait_impl(trait_path, impl_block);
@@ -188,7 +189,7 @@ impl CallBuilder<'_> {
     fn generate_call_forwarder_for_trait_impl(
         &self,
         trait_path: &syn::Path,
-        impl_block: &ir::ItemImpl,
+        impl_block: &ink_ir::ItemImpl,
     ) -> TokenStream2 {
         let span = impl_block.span();
         let cb_ident = Self::call_builder_ident();
@@ -247,7 +248,7 @@ impl CallBuilder<'_> {
     fn generate_ink_trait_impl(
         &self,
         trait_path: &syn::Path,
-        impl_block: &ir::ItemImpl,
+        impl_block: &ink_ir::ItemImpl,
     ) -> TokenStream2 {
         let span = impl_block.span();
         let cb_ident = Self::call_builder_ident();
@@ -269,9 +270,9 @@ impl CallBuilder<'_> {
     fn generate_ink_trait_impl_for_message(
         &self,
         trait_path: &syn::Path,
-        message: ir::CallableWithSelector<ir::Message>,
+        message: ink_ir::CallableWithSelector<ink_ir::Message>,
     ) -> TokenStream2 {
-        use ir::Callable as _;
+        use ink_ir::Callable as _;
         let span = message.span();
         let message_ident = message.ident();
         let output_ident = generator::output_ident(message_ident);
@@ -287,8 +288,8 @@ impl CallBuilder<'_> {
             .is_ref_mut()
             .then(|| Some(quote! { mut }));
         let build_cmd = match message.receiver() {
-            ir::Receiver::Ref => quote! { build },
-            ir::Receiver::RefMut => quote! { build_mut },
+            ink_ir::Receiver::Ref => quote! { build },
+            ink_ir::Receiver::RefMut => quote! { build_mut },
         };
         let attrs = self
             .contract
@@ -345,7 +346,7 @@ impl CallBuilder<'_> {
     /// trait forwarder implementations. Instead we build the calls directly.
     fn generate_call_builder_inherent_impl(
         &self,
-        impl_block: &ir::ItemImpl,
+        impl_block: &ink_ir::ItemImpl,
     ) -> TokenStream2 {
         let span = impl_block.span();
         let cb_ident = Self::call_builder_ident();
@@ -367,7 +368,7 @@ impl CallBuilder<'_> {
     /// building directly and does not forward to a trait call builder.
     fn generate_call_builder_inherent_impl_for_message(
         &self,
-        message: ir::CallableWithSelector<ir::Message>,
+        message: ink_ir::CallableWithSelector<ink_ir::Message>,
     ) -> TokenStream2 {
         let span = message.span();
         let callable = message.callable();

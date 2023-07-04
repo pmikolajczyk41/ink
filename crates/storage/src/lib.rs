@@ -47,6 +47,7 @@
 )]
 
 pub use ink_storage_traits as traits;
+use parity_scale_codec as scale;
 
 #[allow(dead_code)]
 pub(crate) mod lazy;

@@ -17,7 +17,7 @@ use core::iter;
 use crate::GenerateCode;
 use derive_more::From;
 use heck::ToLowerCamelCase as _;
-use ir::{
+use ink_ir::{
     Callable as _,
     HexLiteral,
 };
@@ -33,7 +33,7 @@ use syn::spanned::Spanned as _;
 /// Generates code for all ink! implementation blocks.
 #[derive(From)]
 pub struct ItemImpls<'a> {
-    contract: &'a ir::Contract,
+    contract: &'a ink_ir::Contract,
 }
 impl_as_ref_for_generator!(ItemImpls);
 
@@ -180,7 +180,7 @@ impl ItemImpls<'_> {
     }
 
     /// Generates the code for the given ink! message within a trait implementation block.
-    fn generate_trait_message(message: &ir::Message) -> TokenStream2 {
+    fn generate_trait_message(message: &ink_ir::Message) -> TokenStream2 {
         let span = message.span();
         let attrs = message.attrs();
         let vis = message.visibility();
@@ -206,7 +206,7 @@ impl ItemImpls<'_> {
         )
     }
 
-    fn generate_trait_item_impl(item_impl: &ir::ItemImpl) -> TokenStream2 {
+    fn generate_trait_item_impl(item_impl: &ink_ir::ItemImpl) -> TokenStream2 {
         assert!(item_impl.trait_path().is_some());
         let span = item_impl.span();
         let attrs = item_impl.attrs();
@@ -235,7 +235,7 @@ impl ItemImpls<'_> {
     ///
     /// The `__ink_dylint_Constructor` config attribute is used here to convey the
     /// information that the generated function is an ink! constructor to `dylint`.
-    fn generate_inherent_constructor(constructor: &ir::Constructor) -> TokenStream2 {
+    fn generate_inherent_constructor(constructor: &ink_ir::Constructor) -> TokenStream2 {
         let span = constructor.span();
         let attrs = constructor.attrs();
         let vis = constructor.visibility();
@@ -254,7 +254,7 @@ impl ItemImpls<'_> {
 
     /// Generates the code for the given ink! message within an inherent implementation
     /// block.
-    fn generate_inherent_message(message: &ir::Message) -> TokenStream2 {
+    fn generate_inherent_message(message: &ink_ir::Message) -> TokenStream2 {
         let span = message.span();
         let attrs = message.attrs();
         let vis = message.visibility();
@@ -272,7 +272,7 @@ impl ItemImpls<'_> {
         )
     }
 
-    fn generate_inherent_item_impl(item_impl: &ir::ItemImpl) -> TokenStream2 {
+    fn generate_inherent_item_impl(item_impl: &ink_ir::ItemImpl) -> TokenStream2 {
         assert!(item_impl.trait_path().is_none());
         let span = item_impl.span();
         let attrs = item_impl.attrs();
@@ -285,7 +285,7 @@ impl ItemImpls<'_> {
         let other_items = item_impl
             .items()
             .iter()
-            .filter_map(ir::ImplItem::filter_map_other_item)
+            .filter_map(ink_ir::ImplItem::filter_map_other_item)
             .map(ToTokens::to_token_stream);
         let self_type = item_impl.self_type();
         quote_spanned!(span =>
@@ -300,7 +300,10 @@ impl ItemImpls<'_> {
 
     /// Generates code to guard against ink! implementations that have not been
     /// implemented for the ink! storage struct.
-    fn generate_item_impl_self_ty_guard(&self, item_impl: &ir::ItemImpl) -> TokenStream2 {
+    fn generate_item_impl_self_ty_guard(
+        &self,
+        item_impl: &ink_ir::ItemImpl,
+    ) -> TokenStream2 {
         let self_ty = item_impl.self_type();
         let span = self_ty.span();
         let storage_ident = self.contract.module().storage().ident();
@@ -311,7 +314,7 @@ impl ItemImpls<'_> {
     }
 
     /// Generates code for the given ink! implementation block.
-    fn generate_item_impl(&self, item_impl: &ir::ItemImpl) -> TokenStream2 {
+    fn generate_item_impl(&self, item_impl: &ink_ir::ItemImpl) -> TokenStream2 {
         let self_ty_guard = self.generate_item_impl_self_ty_guard(item_impl);
         let impl_block = match item_impl.trait_path() {
             Some(_) => Self::generate_trait_item_impl(item_impl),

@@ -19,13 +19,14 @@ readme = "README.md"
 name = "ink_ir"
 
 [dependencies]
-quote = "1"
-syn = { version = "2.0", features = ["parsing", "full", "visit", "extra-traits"] }
-proc-macro2 = "1.0"
-itertools = { version = "0.11", default-features = false }
-either = { version = "1.5", default-features = false }
-blake2 = "0.10"
-ink_prelude = { version = "4.1.0", path = "../../prelude/", default-features = false }
+blake2 = { workspace = true }
+either = { workspace = true, default-features = false }
+itertools = { workspace = true, default-features = false }
+proc-macro2 = { workspace = true }
+quote = { workspace = true }
+syn = { workspace = true, features = ["parsing", "full", "visit", "extra-traits"] }
+
+ink_prelude = { workspace = true, default-features = false }
 
 [features]
 default = ["std"]

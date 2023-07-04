@@ -19,26 +19,26 @@ readme = "README.md"
 name = "ink_codegen"
 
 [dependencies]
-ink_primitives = { version = "4.2.0", path = "../../primitives" }
-ir = { version = "4.2.0", package = "ink_ir", path = "../ir", default-features = false }
-quote = "1"
-syn = { version = "2.0", features = ["parsing", "full", "extra-traits"] }
-proc-macro2 = "1.0"
-derive_more = { version = "0.99", default-features = false, features = ["from"] }
-itertools = "0.11"
-either = { version = "1.5", default-features = false }
-blake2 = "0.10"
-heck = "0.4.0"
-scale = { package = "parity-scale-codec", version = "3.4", default-features = false, features = ["derive"] }
-impl-serde = "0.4.0"
+blake2 = { workspace = true }
+derive_more = { workspace = true, default-features = false, features = ["from"] }
+either = { workspace = true, default-features = false }
+heck = { workspace = true }
+impl-serde = { workspace = true }
+itertools = { workspace = true }
+parity-scale-codec = { workspace = true, default-features = false, features = ["derive"] }
+proc-macro2 = { workspace = true }
+quote = { workspace = true }
+serde = { workspace = true, default-features = false, features = ["derive"] }
+serde_json = { workspace = true }
+syn = { workspace = true, features = ["parsing", "full", "extra-traits"] }
 
-serde = { version = "1.0.137", default-features = false, features = ["derive"] }
-serde_json = "1.0.81"
+ink_ir = { workspace = true, default-features = false }
+ink_primitives = { workspace = true }
 
 [features]
 default = ["std"]
 std = [
     "itertools/use_std",
     "either/use_std",
-    "ir/std"
+    "ink_ir/std"
 ]

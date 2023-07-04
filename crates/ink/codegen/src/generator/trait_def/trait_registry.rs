@@ -131,7 +131,9 @@ impl TraitRegistry<'_> {
     }
 
     /// Generates code to assert that ink! input and output types meet certain properties.
-    fn generate_inout_guards_for_message(message: &ir::InkTraitMessage) -> TokenStream2 {
+    fn generate_inout_guards_for_message(
+        message: &ink_ir::InkTraitMessage,
+    ) -> TokenStream2 {
         let message_span = message.span();
         let message_inputs = message.inputs().map(|input| {
             let input_span = input.span();
@@ -162,8 +164,8 @@ impl TraitRegistry<'_> {
     /// Generally the implementation of any ink! trait of the ink! trait registry
     fn generate_registry_for_message(
         &self,
-        message: &ir::InkTraitMessage,
-        selector: ir::Selector,
+        message: &ink_ir::InkTraitMessage,
+        selector: ink_ir::Selector,
     ) -> TokenStream2 {
         let span = message.span();
         let ident = message.ident();
@@ -225,7 +227,7 @@ impl TraitRegistry<'_> {
 
     /// Returns a pair of input bindings `__ink_bindings_N` and types.
     fn input_bindings_and_types(
-        inputs: ir::InputsIter,
+        inputs: ink_ir::InputsIter,
     ) -> (Vec<syn::Ident>, Vec<&syn::Type>) {
         inputs
             .enumerate()
@@ -317,8 +319,8 @@ impl TraitRegistry<'_> {
     /// ink! message defined by the ink! trait definition.
     fn generate_info_for_trait_for_message(
         &self,
-        message: &ir::InkTraitMessage,
-        selector: ir::Selector,
+        message: &ink_ir::InkTraitMessage,
+        selector: ink_ir::Selector,
     ) -> TokenStream2 {
         let span = message.span();
         let trait_info_ident = self.trait_def.trait_info_ident();

@@ -23,6 +23,7 @@ use crate::{
         },
         ExecutionInput,
     },
+    scale,
     types::Gas,
     Environment,
     Error,

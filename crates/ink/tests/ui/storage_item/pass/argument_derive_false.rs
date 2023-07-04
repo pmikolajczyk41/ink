@@ -1,6 +1,6 @@
-use ink::storage::traits::Storable;
 use ink::storage::traits::{
     ManualKey,
+    Storable,
     StorageKey,
 };
 
@@ -14,9 +14,11 @@ struct Contract<KEY: StorageKey = ManualKey<123>> {
 
 // Disabling of deriving allow to implement the trait manually
 impl<KEY: StorageKey> Storable for Contract<KEY> {
-    fn encode<T: scale::Output + ?Sized>(&self, _dest: &mut T) {}
+    fn encode<T: parity_scale_codec::Output + ?Sized>(&self, _dest: &mut T) {}
 
-    fn decode<I: scale::Input>(_input: &mut I) -> Result<Self, scale::Error> {
+    fn decode<I: parity_scale_codec::Input>(
+        _input: &mut I,
+    ) -> Result<Self, parity_scale_codec::Error> {
         Ok(Self {
             a: Default::default(),
             b: Default::default(),

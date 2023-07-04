@@ -61,6 +61,8 @@ use std::{
 };
 use xts::ContractsApi;
 
+use parity_scale_codec as scale;
+
 pub use subxt::PolkadotConfig;
 
 /// Signer that is used throughout the E2E testing.

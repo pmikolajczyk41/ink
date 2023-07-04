@@ -14,7 +14,7 @@
 
 use crate::GenerateCode;
 use derive_more::From;
-use ir::ChainExtensionMethod;
+use ink_ir::ChainExtensionMethod;
 use proc_macro2::TokenStream as TokenStream2;
 use quote::{
     format_ident,
@@ -25,7 +25,7 @@ use syn::spanned::Spanned;
 /// Generator to create an ink! chain extension.
 #[derive(From)]
 pub struct ChainExtension<'a> {
-    extension: &'a ir::ChainExtension,
+    extension: &'a ink_ir::ChainExtension,
 }
 
 impl ChainExtension<'_> {

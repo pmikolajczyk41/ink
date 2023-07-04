@@ -2,7 +2,7 @@
 mod erc721 {
     use ink_storage::Mapping;
 
-    use scale::{
+    use parity_scale_codec::{
         Decode,
         Encode,
     };

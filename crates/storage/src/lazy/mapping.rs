@@ -19,21 +19,23 @@
 //! This mapping doesn't actually "own" any data.
 //! Instead it is just a simple wrapper around the contract storage facilities.
 
-use crate::traits::{
-    AutoKey,
-    Packed,
-    StorableHint,
-    StorageKey,
+use crate::{
+    scale::{
+        Encode,
+        Error,
+        Input,
+        Output,
+    },
+    traits::{
+        AutoKey,
+        Packed,
+        StorableHint,
+        StorageKey,
+    },
 };
 use core::marker::PhantomData;
 use ink_primitives::Key;
 use ink_storage_traits::Storable;
-use scale::{
-    Encode,
-    Error,
-    Input,
-    Output,
-};
 
 /// A mapping of key-value pairs directly into contract storage.
 ///

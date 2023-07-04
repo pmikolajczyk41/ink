@@ -14,7 +14,7 @@
 
 use crate::GenerateCode;
 use derive_more::From;
-use ir::HexLiteral;
+use ink_ir::HexLiteral;
 use proc_macro2::TokenStream as TokenStream2;
 use quote::quote_spanned;
 
@@ -22,7 +22,7 @@ use quote::quote_spanned;
 #[derive(From)]
 pub struct SelectorId<'a> {
     /// The contract to generate code for.
-    macro_input: &'a ir::SelectorMacro<ir::marker::SelectorId>,
+    macro_input: &'a ink_ir::SelectorMacro<ink_ir::marker::SelectorId>,
 }
 
 impl GenerateCode for SelectorId<'_> {
@@ -42,7 +42,7 @@ impl GenerateCode for SelectorId<'_> {
 #[derive(From)]
 pub struct SelectorBytes<'a> {
     /// The contract to generate code for.
-    macro_input: &'a ir::SelectorMacro<ir::marker::SelectorBytes>,
+    macro_input: &'a ink_ir::SelectorMacro<ink_ir::marker::SelectorBytes>,
 }
 
 impl GenerateCode for SelectorBytes<'_> {

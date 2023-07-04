@@ -12,7 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use crate::call::Selector;
+use crate::{
+    call::Selector,
+    scale,
+};
 use ink_prelude::{
     vec,
     vec::Vec,

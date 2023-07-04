@@ -13,6 +13,7 @@
 // limitations under the License.
 
 use crate::{
+    scale,
     AutoStorableHint,
     Packed,
     StorableHint,

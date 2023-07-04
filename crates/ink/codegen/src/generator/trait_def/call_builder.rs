@@ -15,6 +15,7 @@
 use super::TraitDefinition;
 use crate::{
     generator,
+    scale,
     traits::GenerateCode,
 };
 use derive_more::From;
@@ -106,8 +107,8 @@ impl CallBuilder<'_> {
             #[doc(hidden)]
             #[allow(non_camel_case_types)]
             #[derive(
-                ::scale::Encode,
-                ::scale::Decode,
+                ::parity_scale_codec::Encode,
+                ::parity_scale_codec::Decode,
             )]
             #[repr(transparent)]
             pub struct #call_builder_ident<E>
@@ -328,8 +329,8 @@ impl CallBuilder<'_> {
     /// builder.
     fn generate_ink_trait_impl_for_message(
         &self,
-        message: &ir::InkTraitMessage,
-        selector: ir::Selector,
+        message: &ink_ir::InkTraitMessage,
+        selector: ink_ir::Selector,
     ) -> TokenStream2 {
         let span = message.span();
         let message_ident = message.ident();

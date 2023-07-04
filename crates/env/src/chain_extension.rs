@@ -23,6 +23,7 @@ use crate::{
         EnvInstance,
         OnInstance,
     },
+    scale,
 };
 use core::marker::PhantomData;
 

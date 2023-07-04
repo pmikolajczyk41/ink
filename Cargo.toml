@@ -30,7 +30,69 @@ repository = "https://github.com/paritytech/ink"
 version = "4.2.0"
 
 [workspace.dependencies]
+arrayref = { version = "0.3" }
+array-init = { version = "2.0" }
+blake2 = { version = "0.10" }
+cargo_metadata = { version = "0.15.3" }
+cfg-if = { version = "1.0" }
+contract-build = { version = "3.0.0" }
+derive_more = { version = "0.99.17" }
+either = { version = "1.5" }
+funty = { version = "2.0.0" }
+heck = { version = "0.4.0" }
+impl-serde = { version = "0.4.0" }
+itertools = { version = "0.11" }
+jsonrpsee = { version = "0.18.0" }
+num-traits = { version = "0.2" }
+parity-scale-codec = { version = "3.4" }
+paste = { version = "1.0" }
+pretty_assertions = { version = "1" }
+proc-macro2 = { version = "1" }
+quickcheck = { version = "1" }
+quickcheck_macros = { version = "1" }
+quote = { version = "1" }
+rlibc = { version = "1" }
+scale-decode = { version = "0.7.0" }
+scale-encode = { version = "0.3.0" }
+scale-info = { version = "2.6" }
+schemars = { version = "0.8" }
+secp256k1 = { version = "0.27.0" }
+serde = { version = "1.0.137" }
+serde_json = { version = "1.0.81" }
+sha2 = { version = "0.10" }
+sha3 = { version = "0.10" }
+static_assertions = { version = "1.1" }
+subxt = { version = "0.29.0" }
+syn = { version = "2" }
+synstructure = { version = "0.13.0" }
+tokio = { version = "1.18.2" }
+tracing = { version = "0.1.37" }
+tracing-subscriber = { version = "0.3.17" }
+trybuild = { version = "1.0.60" }
+which = { version = "4.4.0" }
+xxhash-rust = { version = "0.8" }
 
+# Substrate dependencies
+pallet-contracts-primitives = "24.0.0"
+sp-core = { version = "21.0.0", default-features = false }
+sp-keyring = "24.0.0"
+sp-runtime = "24.0.0"
+sp-weights = "20.0.0"
+
+# Local dependencies
+ink = { version = "4.2.0", path = "crates/ink" }
+ink_allocator = { version = "4.2.0", path = "crates/allocator" }
+ink_codegen = { version = "4.2.0", path = "crates/ink/codegen" }
+ink_e2e_macro = { version = "4.2.0", path = "crates/e2e/macro" }
+ink_engine = { version = "4.2.0", path = "crates/engine" }
+ink_env = { version = "4.2.0", path = "crates/env" }
+ink_ir = { version = "4.2.0", path = "crates/ink/ir" }
+ink_macro = { version = "4.2.0", path = "crates/ink/macro" }
+ink_metadata = { version = "4.2.0", path = "crates/metadata" }
+ink_prelude = { version = "4.2.0", path = "crates/prelude" }
+ink_primitives = { version = "4.2.0", path = "crates/primitives" }
+ink_storage = { version = "4.2.0", path = "crates/storage" }
+ink_storage_traits = { version = "4.2.0", path = "crates/storage/traits" }
 
 [profile.release]
 panic = "abort"

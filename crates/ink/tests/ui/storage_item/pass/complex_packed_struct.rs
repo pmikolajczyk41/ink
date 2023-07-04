@@ -1,3 +1,4 @@
+use ink::storage::traits::Storable;
 use ink_prelude::{
     collections::{
         BTreeMap,
@@ -5,9 +6,16 @@ use ink_prelude::{
     },
     vec::Vec,
 };
-use ink::storage::traits::Storable;
 
-#[derive(Default, PartialEq, Eq, PartialOrd, Ord, scale::Encode, scale::Decode)]
+#[derive(
+    Default,
+    PartialEq,
+    Eq,
+    PartialOrd,
+    Ord,
+    parity_scale_codec::Encode,
+    parity_scale_codec::Decode,
+)]
 #[cfg_attr(
     feature = "std",
     derive(scale_info::TypeInfo, ink::storage::traits::StorageLayout)
@@ -21,7 +29,7 @@ struct Deep2 {
     f: String,
 }
 
-#[derive(Default, scale::Encode, scale::Decode)]
+#[derive(Default, parity_scale_codec::Encode, parity_scale_codec::Decode)]
 #[cfg_attr(
     feature = "std",
     derive(scale_info::TypeInfo, ink::storage::traits::StorageLayout)
@@ -34,7 +42,7 @@ struct Deep1 {
     e: BTreeSet<Deep2>,
 }
 
-#[derive(Default, scale::Encode, scale::Decode)]
+#[derive(Default, parity_scale_codec::Encode, parity_scale_codec::Decode)]
 #[cfg_attr(
     feature = "std",
     derive(scale_info::TypeInfo, ink::storage::traits::StorageLayout)
