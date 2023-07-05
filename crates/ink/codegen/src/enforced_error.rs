@@ -23,7 +23,6 @@ use quote::format_ident;
 /// `cargo-contract` checks the contract code for these error markers
 /// when building a contract and fails if it finds markers.
 #[derive(scale::Encode, scale::Decode)]
-#[codec(crate = scale)]
 pub enum EnforcedErrors {
     /// The below error represents calling a `&mut self` message in a context that
     /// only allows for `&self` messages. This may happen under certain circumstances

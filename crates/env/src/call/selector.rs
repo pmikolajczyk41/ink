@@ -18,7 +18,6 @@ use derive_more::From;
 #[derive(
     Default, Debug, Copy, Clone, PartialEq, Eq, From, scale::Decode, scale::Encode,
 )]
-#[codec(crate = scale)]
 pub struct Selector {
     /// The 4 underlying bytes.
     bytes: [u8; 4],

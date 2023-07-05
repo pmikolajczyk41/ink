@@ -8,7 +8,6 @@ mod contract {
     }
 
     #[derive(Debug, Default, scale::Decode, scale::Encode)]
-    #[codec(crate = scale)]
     #[cfg_attr(feature = "std", derive(scale_info::TypeInfo, StorageLayout))]
     pub struct PackedFields {
         field_1: i8,

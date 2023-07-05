@@ -52,7 +52,6 @@ use subxt::{
     serde::Serialize,
     serde::Deserialize,
 )]
-#[codec(crate = scale)]
 #[encode_as_type(crate_path = "subxt::ext::scale_encode")]
 pub struct Weight {
     #[codec(compact)]
@@ -80,7 +79,6 @@ impl From<Weight> for sp_weights::Weight {
 
 /// A raw call to `pallet-contracts`'s `instantiate_with_code`.
 #[derive(Debug, scale::Encode, scale::Decode, scale_encode::EncodeAsType)]
-#[codec(crate = scale)]
 #[encode_as_type(trait_bounds = "", crate_path = "subxt::ext::scale_encode")]
 pub struct InstantiateWithCode<E: Environment> {
     #[codec(compact)]
@@ -94,7 +92,6 @@ pub struct InstantiateWithCode<E: Environment> {
 
 /// A raw call to `pallet-contracts`'s `call`.
 #[derive(Debug, scale::Decode, scale::Encode, scale_encode::EncodeAsType)]
-#[codec(crate = scale)]
 #[encode_as_type(trait_bounds = "", crate_path = "subxt::ext::scale_encode")]
 pub struct Call<E: Environment> {
     dest: MultiAddress<E::AccountId, ()>,
@@ -107,7 +104,6 @@ pub struct Call<E: Environment> {
 
 /// A raw call to `pallet-contracts`'s `call`.
 #[derive(Debug, scale::Decode, scale::Encode, scale_encode::EncodeAsType)]
-#[codec(crate = scale)]
 #[encode_as_type(trait_bounds = "", crate_path = "subxt::ext::scale_encode")]
 pub struct Transfer<E: Environment, C: subxt::Config> {
     dest: subxt::utils::Static<C::Address>,
@@ -126,7 +122,6 @@ pub struct Transfer<E: Environment, C: subxt::Config> {
     scale::Encode,
     scale_encode::EncodeAsType,
 )]
-#[codec(crate = scale)]
 #[encode_as_type(crate_path = "subxt::ext::scale_encode")]
 pub enum Determinism {
     /// The execution should be deterministic and hence no indeterministic instructions
@@ -148,7 +143,6 @@ pub enum Determinism {
 
 /// A raw call to `pallet-contracts`'s `upload`.
 #[derive(Debug, scale::Encode, scale::Decode, scale_encode::EncodeAsType)]
-#[codec(crate = scale)]
 #[encode_as_type(trait_bounds = "", crate_path = "subxt::ext::scale_encode")]
 pub struct UploadCode<E: Environment> {
     code: Vec<u8>,
@@ -158,7 +152,6 @@ pub struct UploadCode<E: Environment> {
 
 /// A struct that encodes RPC parameters required to instantiate a new smart contract.
 #[derive(serde::Serialize, scale::Encode)]
-#[codec(crate = scale)]
 #[serde(rename_all = "camelCase")]
 struct RpcInstantiateRequest<C: subxt::Config, E: Environment> {
     origin: C::AccountId,
@@ -172,7 +165,6 @@ struct RpcInstantiateRequest<C: subxt::Config, E: Environment> {
 
 /// A struct that encodes RPC parameters required to upload a new smart contract.
 #[derive(serde::Serialize, scale::Encode)]
-#[codec(crate = scale)]
 #[serde(rename_all = "camelCase")]
 struct RpcCodeUploadRequest<C: subxt::Config, E: Environment>
 where
@@ -188,7 +180,6 @@ where
 ///
 /// Copied from [`pallet-contracts-rpc`].
 #[derive(serde::Serialize, scale::Encode)]
-#[codec(crate = scale)]
 #[serde(rename_all = "camelCase")]
 struct RpcCallRequest<C: subxt::Config, E: Environment> {
     origin: C::AccountId,
@@ -201,7 +192,6 @@ struct RpcCallRequest<C: subxt::Config, E: Environment> {
 
 /// Reference to an existing code hash or a new Wasm module.
 #[derive(serde::Serialize, scale::Encode)]
-#[codec(crate = scale)]
 #[serde(rename_all = "camelCase")]
 enum Code {
     /// A Wasm module as raw bytes.

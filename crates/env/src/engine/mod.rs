@@ -137,7 +137,6 @@ mod decode_instantiate_result_tests {
     type ContractResult<T, E> = Result<T, E>;
 
     #[derive(scale::Encode, scale::Decode)]
-    #[codec(crate = scale)]
     struct ContractError(String);
 
     type AccountId = <DefaultEnvironment as Environment>::AccountId;

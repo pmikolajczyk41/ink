@@ -24,7 +24,6 @@ mod erc721 {
     }
 
     #[derive(Encode, Decode, Debug, PartialEq, Eq, Copy, Clone)]
-    #[codec(crate = scale)]
     #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
     pub enum Error {
         NotOwner,

@@ -7,7 +7,6 @@ mod contract {
     pub type MyResultAlias = Result<MyTypeAlias, Error>;
 
     #[derive(Debug, PartialEq, Eq, scale::Encode, scale::Decode)]
-    #[codec(crate = scale)]
     #[cfg_attr(feature = "std", derive(::scale_info::TypeInfo))]
     pub enum Error {
         Foo,

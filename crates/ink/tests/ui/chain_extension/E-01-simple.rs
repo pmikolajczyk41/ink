@@ -42,7 +42,6 @@ pub trait RuntimeReadWrite {
 #[derive(
     Debug, Copy, Clone, PartialEq, Eq, scale::Encode, scale::Decode, scale_info::TypeInfo,
 )]
-#[codec(crate = scale)]
 pub enum ReadWriteErrorCode {
     InvalidKey,
     CannotWriteToKey,
@@ -55,7 +54,6 @@ pub enum ReadWriteErrorCode {
 #[derive(
     Debug, Copy, Clone, PartialEq, Eq, scale::Encode, scale::Decode, scale_info::TypeInfo,
 )]
-#[codec(crate = scale)]
 pub enum ReadWriteError {
     ErrorCode(ReadWriteErrorCode),
     BufferTooSmall { required_bytes: u32 },
@@ -75,7 +73,6 @@ impl From<scale::Error> for ReadWriteError {
 
 /// Returned by `unlock_access` if permission to access key was not granted with reason.
 #[derive(Debug, PartialEq, Eq, scale::Encode, scale::Decode, scale_info::TypeInfo)]
-#[codec(crate = scale)]
 pub struct UnlockAccessError {
     reason: String,
 }
@@ -90,7 +87,6 @@ impl From<scale::Error> for UnlockAccessError {
 #[derive(
     Debug, Copy, Clone, PartialEq, Eq, scale::Encode, scale::Decode, scale_info::TypeInfo,
 )]
-#[codec(crate = scale)]
 pub enum Access {
     ReadWrite,
     ReadOnly,

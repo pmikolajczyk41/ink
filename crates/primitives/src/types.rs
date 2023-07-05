@@ -34,7 +34,6 @@ use {
 #[derive(
     Debug, Copy, Clone, PartialEq, Eq, Ord, PartialOrd, Hash, Decode, Encode, From,
 )]
-#[codec(crate = scale)]
 #[cfg_attr(feature = "std", derive(TypeInfo, DecodeAsType, EncodeAsType))]
 pub struct AccountId([u8; 32]);
 
@@ -95,7 +94,6 @@ impl<'a> TryFrom<&'a [u8]> for AccountId {
     From,
     Default,
 )]
-#[codec(crate = scale)]
 #[cfg_attr(feature = "std", derive(TypeInfo, DecodeAsType, EncodeAsType))]
 pub struct Hash([u8; 32]);
 
