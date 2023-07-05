@@ -16,7 +16,8 @@ include = ["Cargo.toml", "src/**/*.rs", "README.md", "LICENSE"]
 readme = "README.md"
 
 [dependencies]
-scale = { workspace = true, features = ["derive"] }
+# cannot inherit due to: https://github.com/bkchr/proc-macro-crate/issues/34
+scale = { package = "parity-scale-codec", version = "3.4", default-features = false, features = ["derive"] }
 quote = { workspace = true }
 proc-macro2 = { workspace = true }
 syn = { workspace = true }
