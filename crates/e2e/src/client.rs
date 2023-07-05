@@ -363,6 +363,7 @@ where
     scale_decode::DecodeAsType,
     scale_encode::EncodeAsType,
 )]
+#[codec(crate = scale)]
 #[decode_as_type(trait_bounds = "", crate_path = "subxt::ext::scale_decode")]
 #[encode_as_type(crate_path = "subxt::ext::scale_encode")]
 struct ContractInstantiatedEvent<E: Environment> {
@@ -388,6 +389,7 @@ where
     scale_decode::DecodeAsType,
     scale_encode::EncodeAsType,
 )]
+#[codec(crate = scale)]
 #[decode_as_type(trait_bounds = "", crate_path = "subxt::ext::scale_decode")]
 #[encode_as_type(crate_path = "subxt::ext::scale_encode")]
 struct CodeStoredEvent<E: Environment> {

@@ -8,6 +8,7 @@ use ink_prelude::{
 };
 
 #[derive(Default, PartialEq, Eq, PartialOrd, Ord, scale::Encode, scale::Decode)]
+#[codec(crate = scale)]
 #[cfg_attr(
     feature = "std",
     derive(scale_info::TypeInfo, ink::storage::traits::StorageLayout)
@@ -29,6 +30,7 @@ enum Deep2 {
 }
 
 #[derive(Default, scale::Encode, scale::Decode)]
+#[codec(crate = scale)]
 #[cfg_attr(
     feature = "std",
     derive(scale_info::TypeInfo, ink::storage::traits::StorageLayout)
@@ -44,6 +46,7 @@ enum Deep1 {
 }
 
 #[derive(Default, scale::Encode, scale::Decode)]
+#[codec(crate = scale)]
 #[cfg_attr(
     feature = "std",
     derive(scale_info::TypeInfo, ink::storage::traits::StorageLayout)

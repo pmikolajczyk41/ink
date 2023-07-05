@@ -34,6 +34,7 @@ pub struct ChainExtensionHandler {
 #[derive(
     Debug, From, scale::Encode, scale::Decode, PartialEq, Eq, PartialOrd, Ord, Hash,
 )]
+#[codec(crate = scale)]
 pub struct ExtensionId(u32);
 
 /// Types implementing this trait can be used as chain extensions.
