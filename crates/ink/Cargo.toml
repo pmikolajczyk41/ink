@@ -18,8 +18,7 @@ rust-version = "1.63"
 
 [dependencies]
 derive_more = { workspace = true, features = ["from"] }
-# cannot inherit due to: https://github.com/bkchr/proc-macro-crate/issues/34
-scale = { package = "parity-scale-codec", version = "3.4", default-features = false, features = ["derive"] }
+scale = { package = "parity-scale-codec", workspace = true }
 
 ink_env = { workspace = true }
 ink_storage = { workspace = true }

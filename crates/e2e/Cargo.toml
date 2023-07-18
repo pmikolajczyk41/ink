@@ -19,8 +19,7 @@ readme = "README.md"
 funty = { workspace = true }
 impl-serde = { workspace = true }
 jsonrpsee = { workspace = true, features = ["ws-client"] }
-# cannot inherit due to: https://github.com/bkchr/proc-macro-crate/issues/34
-scale = { package = "parity-scale-codec", version = "3.4", default-features = false, features = ["derive"] }
+scale = { package = "parity-scale-codec", workspace = true }
 serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
 subxt = { workspace = true }

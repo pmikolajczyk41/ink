@@ -17,8 +17,7 @@ readme = "README.md"
 
 [dependencies]
 derive_more = { workspace = true, features = ["from", "display"] }
-# cannot inherit due to: https://github.com/bkchr/proc-macro-crate/issues/34
-scale = { package = "parity-scale-codec", version = "3.4", default-features = false, features = ["derive"] }
+scale = { package = "parity-scale-codec", workspace = true }
 scale-decode = { workspace = true, features = ["derive"], optional = true }
 scale-encode = { workspace = true, features = ["derive"], optional = true }
 scale-info = { workspace = true, features = ["derive"], optional = true }

@@ -21,8 +21,7 @@ arrayref = { workspace = true }
 cfg-if = { workspace = true }
 derive_more = { workspace = true, features = ["from", "display"] }
 num-traits = { workspace = true, features = ["i128"] }
-# cannot inherit due to: https://github.com/bkchr/proc-macro-crate/issues/34
-scale = { package = "parity-scale-codec", version = "3.4", default-features = false, features = ["derive"] }
+scale = { package = "parity-scale-codec", workspace = true }
 paste = { workspace = true }
 static_assertions = { workspace = true }
 
